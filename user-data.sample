@@ -4,7 +4,7 @@ coreos:
   units:
     - name: docker-tcp.socket
       command: start
-      enable: yes
+      enable: true
       content: |
         [Unit]
         Description=Docker Socket for the API
