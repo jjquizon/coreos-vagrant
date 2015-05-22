@@ -116,3 +116,9 @@ Follow the [Enable Remote API instructions][coreos-enabling-port-forwarding] to 
 Then you can then use the `docker` command from your local shell by setting `DOCKER_HOST`:
 
     export DOCKER_HOST=tcp://localhost:2375
+
+## Current Versions of dependencies
+
+Vagrant version: 1.7.2
+VirtualBox: 4.3.20
+CoreOS-alpha: 575.0.0
