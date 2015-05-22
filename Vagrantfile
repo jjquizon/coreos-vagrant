@@ -15,7 +15,7 @@ $update_channel = "alpha"
 $enable_serial_logging = false
 $share_home = false
 $vm_gui = false
-$vm_memory = 1024
+$vm_memory = 4096
 $vm_cpus = 1
 
 # Attempt to apply the deprecated environment variable NUM_INSTANCES to
@@ -113,6 +113,11 @@ Vagrant.configure("2") do |config|
 
       ip = "172.17.8.#{i+100}"
       config.vm.network :private_network, ip: ip
+
+      (49000..49900).each do |port|
+        config.vm.network :forwarded_port, :host => port, :guest => port
+      end
+      config.vm.synced_folder "/Users", "/Users", id: "core", :nfs => true, :mount_options => ['nolock,vers=3,udp']
 
       # Uncomment below to enable NFS for sharing the host machine into the coreos-vagrant VM.
       #config.vm.synced_folder ".", "/home/core/share", id: "core", :nfs => true, :mount_options => ['nolock,vers=3,udp']
